@@ -1,19 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Car List</title>
-</head>
-<body>
-	{% for car in cars %}
-		<a href="{{car.get_absolute_url}}">
-			<h1>
-				{{car.make}} - {{car.model}}
-				<small>
-					{{car.year}}
-				</small>
-			</h1>
-		</a>
-		<hr>
-	{% endfor %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block header %}
+                                   
+         Car List
+
+{% endblock header %}
+
+{% block content %}
+
+			{% for car in cars %}
+           <div class="col-12 col-sm-6 col-lg-4 card-deck">
+              <a class= "remove-underline" href="{{car.get_absolute_url}}">                      
+                    <div class="card-ms card-list-onhover card box-shadow my-animate">  
+					 {% if car.car_img %}
+						<img class="card-img-top-ms card-img-top" src="{{car.car_img.url}}" alt="car_img">   
+					{% endif %}	  
+                            <div class="card-body">
+                                <h5 class="text-dark card-title">{{car.make}} - {{car.model}}</h5>
+                                <p class="text-secondary card-text">{{car.year}}</p>
+                          </div>
+                  </div>
+              </a>
+          </div>
+			{% endfor %}
+ {% endblock content %}
+
+

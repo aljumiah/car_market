@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Create Car{% endblock title %}
+
+{% block content %}
+    <br>
+      <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="text-small nav-link active" >Adding Car</a>
+              </li>
+      </ul>
+<form class="padding-left-r-form background-white msa_margin_buttom" action="{% url 'car-create' %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form|crispy}}
+  <button type="submit" class="btn btn-success margin-top my-animate" > Create <i class="fas fa-plus"></i> </button>
+</form>
+{% endblock content %}
